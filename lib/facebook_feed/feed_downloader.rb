@@ -79,7 +79,7 @@ module FacebookFeed
             else
               comment_data[:like_count] = comment["likes"]
             end
-            doc[:comments].push(comment_data)
+            doc[:comments] << comment_data
           end
         end
         docs << doc
