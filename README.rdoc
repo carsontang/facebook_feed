@@ -16,3 +16,26 @@ sudo gem install facebook_feed
   > downloader = FacebookFeed::FeedDownloader.new(opts)
   > posts = downloader.download_posts if downloader.has_more_posts?
   > puts JSON.pretty_generate(posts)
+  >{
+    "poster": "Jane Smith",
+    "message": "What has been a reliable/cheap/mostly reliable internet company for you apartment peoples?",
+    "type": "status",
+    "created_time": "2012-07-19T02:23:31+0000",
+    "updated_time": "2012-07-19T06:21:59+0000",
+    "like_count": 0,
+    "comment_count": 6,
+    "comments": [
+      {
+        "commenter": "Robert Smith",
+        "message": "I think the one that everyone generally gets is Time Warner. I don't know if it's the most reliable or cheapest one though.",
+        "created_time": "2012-07-19T02:27:47+0000",
+        "like_count": 1
+      },
+      {
+        "commenter": "Kyle Liang",
+        "message": "yepp...sounds about right...",
+        "created_time": "2012-07-19T06:21:59+0000",
+        "like_count": 0
+      }
+    ]
+  },
