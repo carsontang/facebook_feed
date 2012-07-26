@@ -2,7 +2,9 @@ module FacebookFeed
   # TO-DO:
   # Deal with expired access tokens, which render urls in @feed_urls useless
   class FeedDownloader
-    def initialize(feed_id, access_token)
+    def initialize(opts)
+      feed_id = opts[:feed_id]
+      access_token = opts[:access_token]
       base_url = "https://graph.facebook.com/#{feed_id}/feed?access_token=#{access_token}"
       @feed_urls = []
       @feed_urls << base_url

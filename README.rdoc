@@ -12,8 +12,7 @@ sudo gem install facebook_feed
 == Usage: Facebook Group Feed Download
 
   > require 'facebook_feed'
-  > feed_id = 123456789
-  > access_token = AAACEdEose0cBAHqa7TcU11fyZBHjas26pn9DR0WxEguIzeFeintOZClb78AnhMibZBlRbZBiyVzD5b8rOgeI35cEX55m4rwk3XzBnhkCp0Qrd5cQJd0o
-  > downloader = FacebookFeed::FeedDownloader.new(feed_id, access_token)
+  > opts = { :feed_id => 123456789, :access_token => "AAACEdEose0cBAHqa7TcU11fyZBHjas26pn9DR0WxEguIzeFeintOZClb78AnhMibZBlRbZBiyVzD5b8rOgeI35cEX55m4rwk3XzBnhkCp0Qrd5cQJd0o" }
+  > downloader = FacebookFeed::FeedDownloader.new(opts)
   > posts = downloader.download_posts if downloader.has_more_posts?
   > puts JSON.pretty_generate(posts)
