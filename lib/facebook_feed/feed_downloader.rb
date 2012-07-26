@@ -12,7 +12,7 @@ module FacebookFeed
       !@feed_urls.empty?
     end
 
-    def download_more_posts
+    def download_posts
       # Return an array of posts in JSON format   
       unless @feed_urls.empty?
         current_url = @feed_urls.shift
