@@ -16,7 +16,7 @@ sudo gem install facebook_feed
   > downloader = FacebookFeed::FeedDownloader.new(opts)
   > posts = downloader.download_posts if downloader.has_more_posts?
   > puts JSON.pretty_generate(posts)
-  >{
+  >[{
     "poster": "Jane Fuller",
     "message": "What has been a reliable/cheap/mostly reliable internet company for you apartment peoples?",
     "type": "status",
@@ -38,4 +38,5 @@ sudo gem install facebook_feed
         "like_count": 0
       }
     ]
-  },
+  	}
+   ]
