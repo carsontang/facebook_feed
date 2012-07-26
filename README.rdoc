@@ -39,7 +39,7 @@ sudo gem install facebook_feed
 	        "like_count": 4
 	      },
 	      {
-	        "commenter": "Eric Johnson",
+	        "commenter": "Eric Fuller",
 	        "message": "Race hard for the people that can't! Also, memories!",
 	        "created_time": "2012-07-26T03:17:20+0000",
 	        "like_count": 4
