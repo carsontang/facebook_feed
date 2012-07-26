@@ -16,34 +16,3 @@ sudo gem install facebook_feed
   > downloader = FacebookFeed::FeedDownloader.new(opts)
   > posts = downloader.download_posts if downloader.has_more_posts?
   > puts JSON.pretty_generate(posts)
-  >[
-	{
-	    "poster": "Judy Fuller",
-	    "message": "Hi Team! Just saw your race packet... And got REALLY EXCITED. Good luck this weekend :) Sorry I can't be there in LA (I'm moving) but I know you guys will do well. Go out there and do what UCLA does best: GO TEAM! :)",
-	    "type": "status",
-	    "created_time": "2012-07-25T23:29:22+0000",
-	    "updated_time": "2012-07-26T03:17:20+0000",
-	    "like_count": 8,
-	    "comment_count": 3,
-	    "comments": [
-	      {
-	        "commenter": "Garrett Smith",
-	        "message": "what she said!",
-	        "created_time": "2012-07-25T23:38:21+0000",
-	        "like_count": 0
-	      },
-	      {
-	        "commenter": "Chris Manning",
-	        "message": "Go team!",
-	        "created_time": "2012-07-26T02:47:18+0000",
-	        "like_count": 4
-	      },
-	      {
-	        "commenter": "Eric Fuller",
-	        "message": "Race hard for the people that can't! Also, memories!",
-	        "created_time": "2012-07-26T03:17:20+0000",
-	        "like_count": 4
-	      }
-    	]
-  	}
-   ]	
