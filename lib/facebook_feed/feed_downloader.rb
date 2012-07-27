@@ -1,11 +1,19 @@
 module FacebookFeed
   # TO-DO:
   # Deal with expired access tokens, which render urls in @feed_urls useless
+  # Create FacebookFeed errors that are raised when FeedDownloader isn't properly initialized
+
   class FeedDownloader
-    def initialize(opts)
-      feed_id = opts[:feed_id]
-      access_token = opts[:access_token]
-      base_url = "https://graph.facebook.com/#{feed_id}/feed?access_token=#{access_token}"
+    attr_reader :access_token, :feed_id
+
+    def initialize(args)
+      args.each do |k, v|
+        instance_variable_set("@#{k}", v) unless v.nil?
+      end
+      #feed_id = opts[:feed_id]
+      #access_token = opts[:access_token]
+
+      base_url = "https://graph.facebook.com/#{@feed_id}/feed?access_token=#{@access_token}"
       @feed_urls = []
       @feed_urls << base_url
     end
@@ -18,7 +26,12 @@ module FacebookFeed
       # Return an array of posts in JSON format   
       unless @feed_urls.empty?
         current_url = @feed_urls.shift
-        content_hash = get_content_hash(current_url)
+        begin
+          content_hash = get_content_hash(current_url)
+        rescue RestClient::InternalServerError => e
+          raise FacebookFeed::InvalidCredentialsError,
+            "Invalid Facebook Group ID or access token:\nGroup ID: #{@feed_id}\nAccess Token: #{@access_token}"
+        end
         add_urls_if_any(@feed_urls, content_hash)
         extract_posts(content_hash)
       end
