@@ -2,7 +2,7 @@
 
 == Installation
 
-sudo gem install facebook_feed
+  > sudo gem install facebook_feed
 
 == Requirements
 
@@ -16,3 +16,13 @@ sudo gem install facebook_feed
   > downloader = FacebookFeed::FeedDownloader.new(opts)
   > posts = downloader.download_posts if downloader.has_more_posts?
   > puts JSON.pretty_generate(posts)
+
+== How to obtain feed ID and access token
+
+Visit the Facebook Group whose feed you want to download. Take the ID from the URL. For example,
+if the URL is https://www.facebook.com/groups/1234567/, the feed ID is 1234567.
+
+To obtain the access token, visit the Graph API Explorer at https://developers.facebook.com/tools/explorer.
+You'll see a button that says "Get Access Token". Click on it, and select the permissions you'll
+need to access your group's feed. If your group is closed, you'll need user_groups and friends_groups
+permissions.
