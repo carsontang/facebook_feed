@@ -26,3 +26,8 @@ To obtain the access token, visit the Graph API Explorer at https://developers.f
 You'll see a button that says "Get Access Token". Click on it, and select the permissions you'll
 need to access your group's feed. If your group is closed, you'll need user_groups and friends_groups
 permissions.
+
+== Release Notes
+
+1.0.2 (04/17/2013) - Fixed bug deals with Group feed posts with no comment data
+1.0.1 (07/26/2012) - Released Ruby bindings for Facebook Groups feed API
