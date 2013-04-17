@@ -10,8 +10,6 @@ module FacebookFeed
       args.each do |k, v|
         instance_variable_set("@#{k}", v) unless v.nil?
       end
-      #feed_id = opts[:feed_id]
-      #access_token = opts[:access_token]
 
       base_url = "https://graph.facebook.com/#{@feed_id}/feed?access_token=#{@access_token}"
       @feed_urls = []
