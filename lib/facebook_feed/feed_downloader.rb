@@ -68,11 +68,7 @@ module FacebookFeed
         doc[:type] = post["type"]
         doc[:created_time] = post["created_time"]
         doc[:updated_time] = post["updated_time"]
-        unless post["likes"].nil?
-          doc[:like_count] = post["likes"]["count"]
-        else
-          doc[:like_count] = 0
-        end
+        doc[:like_count] = post["likes"].nil? ? 0 : post["likes"]["count"]
         
         # Store each comment's sender, time, number of likes, and
         # the total number of comments for this post
@@ -89,11 +85,7 @@ module FacebookFeed
               comment_data[:commenter] = comment["from"]["name"]
               comment_data[:message] = comment["message"]
               comment_data[:created_time] = comment["created_time"]
-              if comment["likes"].nil?
-                comment_data[:like_count] = 0
-              else
-                comment_data[:like_count] = comment["likes"]
-              end
+              comment_data[:like_count] = comment["likes"] || 0
               doc[:comments] << comment_data
             end
           end
