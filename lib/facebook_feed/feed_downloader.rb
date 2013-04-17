@@ -76,26 +76,29 @@ module FacebookFeed
         
         # Store each comment's sender, time, number of likes, and
         # the total number of comments for this post
-        doc[:comment_count] = post["comments"]["count"]
-
-        # Check if data is not nil rather than comment count because
-        # there's a Facebook bug that doesn't log all comments even
-        # if comment number > 0
-        unless post["comments"]["data"].nil?
-          doc[:comments] = []
-          comments = post["comments"]["data"]
-          comments.each do |comment|
-            comment_data = {}
-            comment_data[:commenter] = comment["from"]["name"]
-            comment_data[:message] = comment["message"]
-            comment_data[:created_time] = comment["created_time"]
-            if comment["likes"].nil?
-              comment_data[:like_count] = 0
-            else
-              comment_data[:like_count] = comment["likes"]
+        unless post["comments"].nil?
+          doc[:comment_count] = post["comments"]["count"]
+          # Check if data is not nil rather than comment count because
+          # there's a Facebook bug that doesn't log all comments even
+          # if comment number > 0
+          unless post["comments"]["data"].nil?
+            doc[:comments] = []
+            comments = post["comments"]["data"]
+            comments.each do |comment|
+              comment_data = {}
+              comment_data[:commenter] = comment["from"]["name"]
+              comment_data[:message] = comment["message"]
+              comment_data[:created_time] = comment["created_time"]
+              if comment["likes"].nil?
+                comment_data[:like_count] = 0
+              else
+                comment_data[:like_count] = comment["likes"]
+              end
+              doc[:comments] << comment_data
             end
-            doc[:comments] << comment_data
           end
+        else
+          doc[:comment_count] = 0
         end
         docs << doc
       end
