@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
   s.name        = 'facebook_feed'
-  s.version     = '1.0.1'
-  s.date        = '2012-07-26'
+  s.version     = '1.1.0'
+  s.date        = '2013-04-17'
   s.summary     = "Ruby bindings for Facebook feed APIs"
   s.description = "A Ruby wrapper around Facebook feed APIs. Currently, Facebook Group and Feed APIs are supported."
   s.authors     = ["Carson Tang"]
