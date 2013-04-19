@@ -28,6 +28,14 @@ The posts object in the example code above is an array of hash objects like the 
       :comment_count => 'Number of comments the post has',
       :comments => ['Array of comment data']
     }
+
+A comment datum is itself a hash as well. It has the following structure:
+    {
+      :commenter => 'Name of person who made the comment',
+      :message => 'Comment text'
+      :created_time => 'UTC time comment was made'.
+      :like_count => 'Number of likes the comment has',
+    }
     
 == How to obtain feed ID and access token
 

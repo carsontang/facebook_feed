@@ -84,7 +84,7 @@ module FacebookFeed
     #   :message => 'Comment text'
     #   :created_time => 'UTC time comment was made'.
     #   :like_count => 'Number of likes the comment has',
-    #  }
+    # }
 
     def extract_posts(content_hash)
       posts = content_hash["data"]
