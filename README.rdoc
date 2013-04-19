@@ -17,6 +17,18 @@
   > posts = downloader.download_posts if downloader.has_more_posts?
   > puts JSON.pretty_generate(posts)
 
+The posts object in the example code above is an array of hash objects like the following
+    {
+      :poster => 'Name of message poster',
+      :message => 'Message text',
+      :type => 'Type of post',
+      :created_time => 'UTC time message was created',
+      :updated_time => 'UTC time message was updated',
+      :like_count => 'Number of likes the post has',
+      :comment_count => 'Number of comments the post has',
+      :comments => ['Array of comment data']
+    }
+    
 == How to obtain feed ID and access token
 
 Visit the Facebook Group whose feed you want to download. Take the ID from the URL. For example,

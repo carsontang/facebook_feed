@@ -6,7 +6,16 @@ module FacebookFeed
   class FeedDownloader
     attr_reader :access_token, :feed_id
 
+    # Initialize an instance of FeedDownloader like so
+    # opts = { :feed_id => 1234567, :access_token => 'ABCDEFGHI' }
+    # downloader = FeedDownloader.new(opts)
+
     def initialize(args)
+      raise FacebookFeed::InvalidFeedDownloaderError, "FeedDownloader must be instantiated with a Ruby hash" unless args.is_a?(Hash)
+      unless (args.keys.length == 2) and args.keys.include?(:feed_id) and args.keys.include?(:access_token)
+        raise FacebookFeed::InvalidFeedDownloaderError, "FeedDownloader must be configured with a hash with two keys only: :feed_id and :access_token"
+      end
+
       args.each do |k, v|
         instance_variable_set("@#{k}", v) unless v.nil?
       end
@@ -41,6 +50,7 @@ module FacebookFeed
       feed_urls << content_hash["paging"]["next"] unless posts.empty?
     end
 
+    # Returns a hash object of the JSON returned by the Facebook Graph API
     def get_content_hash(url)
       # TO-DO: Write code to authenticate server
       content = RestClient::Resource.new(
@@ -53,6 +63,28 @@ module FacebookFeed
         ).get
       JSON.parse(content)
     end
+
+    # Takes in a hash object of the JSON returned by the Facebook Graph API
+    # and returns an array of hash objects like the following:
+    # {
+    # :poster => 'Name of message poster',
+    # :message => 'Message text',
+    # :type => 'Type of post',
+    # :created_time => 'UTC time message was created',
+    # :updated_time => 'UTC time message was updated',
+    # :like_count => 'Number of likes the post has',
+    # :comment_count => 'Number of comments the post has',
+    # :comments => ['Array of comment data']
+    # }
+    # 
+    # A comment datum is itself as a hash as well.
+    # It is like the following:
+    # {
+    #   :commenter => 'Name of person who made the comment',
+    #   :message => 'Comment text'
+    #   :created_time => 'UTC time comment was made'.
+    #   :like_count => 'Number of likes the comment has',
+    #  }
 
     def extract_posts(content_hash)
       posts = content_hash["data"]
