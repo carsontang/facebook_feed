@@ -30,7 +30,17 @@ class FacebookFeedTest < Test::Unit::TestCase
   end
 
   # Tests for FacebookFeed::FeedDownloader public API
+
+  def test_has_more_posts_when_there_are_some
+    opts = {:feed_id => @valid_feed_id, :access_token => @valid_access_token}
+    downloader = FacebookFeed::FeedDownloader.new(opts)
+    assert downloader.has_more_posts?, "FacebookFeed::FeedDownloader should have more posts."
+  end
+
   def test_has_more_posts_when_there_are_none
-    
+    opts = {:feed_id => @valid_feed_id, :access_token => @valid_access_token}
+    downloader = FacebookFeed::FeedDownloader.new(opts)
+    downloader.instance_variable_set(:@feed_urls, [])
+    assert !downloader.has_more_posts?, "FacebookFeed::FeedDownloader should not have more posts."
   end
 end

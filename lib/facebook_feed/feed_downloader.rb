@@ -45,6 +45,7 @@ module FacebookFeed
     end
 
     private
+    
     def add_urls_if_any(feed_urls, content_hash)
       posts = content_hash["data"]
       feed_urls << content_hash["paging"]["next"] unless posts.empty?
