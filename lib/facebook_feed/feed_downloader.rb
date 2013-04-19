@@ -26,12 +26,12 @@ module FacebookFeed
     end
 
     def has_more_posts?
-      !@feed_urls.empty?
+      @feed_urls.any?
     end
 
     def download_posts
       # Return an array of posts in JSON format   
-      unless @feed_urls.empty?
+      if @feed_urls.any?
         current_url = @feed_urls.shift
         begin
           content_hash = get_content_hash(current_url)
