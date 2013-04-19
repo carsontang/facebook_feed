@@ -2,7 +2,7 @@
 
 == Installation
 
-  > sudo gem install facebook_feed
+  > gem install facebook_feed
 
 == Requirements
 
