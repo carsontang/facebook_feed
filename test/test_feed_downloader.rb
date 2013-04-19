@@ -59,6 +59,6 @@ class FacebookFeedTest < Test::Unit::TestCase
     posts_keys = posts.first.keys
     keys = %w(poster message type created_time updated_time like_count comment_count comments)
     keys.map!(&:to_sym)
-    keys.each { |key| assert posts_keys.include?(key) }
+    keys.each { |key| assert posts_keys.include?(key), "A post hash should not have this key: #{key}" }
   end
 end
