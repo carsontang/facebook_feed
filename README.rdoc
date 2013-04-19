@@ -49,6 +49,8 @@ permissions.
 
 == Release Notes
 
+1.0.3 (04/18/2013) - Enforced stricter initialization of FacebookFeed::FeedDownloader
+
 1.0.2 (04/17/2013) - Fixed bug that deals with Facebook Group feed posts with no comment data
 
 1.0.1 (07/26/2012) - Released Ruby bindings for Facebook Groups feed API
