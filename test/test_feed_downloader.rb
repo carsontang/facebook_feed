@@ -1,12 +1,12 @@
-require 'test/unit'
+require 'minitest/autorun'
 require 'facebook_feed'
 
-class FacebookFeedTest < Test::Unit::TestCase
+class FacebookFeedTest < Minitest::Test
   def setup
     @valid_feed_id = 1234566
-    @valid_access_token = "ABCDEFG"
-    @real_feed_id = 274082972642991
-    @real_access_token = "BAAE3k76AcDABAFe3Jz5qZArd3GVwurFCw2Ev5ZChVbwZBxFWpXZC90tkuKyFvIZCKKskESq3bkhknVsBKO3JKXpExgYxj7ifQ65FI7xqESPAtmIcj80XqTUvoRNEQBKVG0woIXFzmZB8qyF76txgWPYh0b8NoLbToHa0i5H5ZBdYYfYJqgCQ1dIfCeUZBs5if68SgvbXISwGBgZDZD"
+    @valid_access_token = 'ABCDEFG'
+    @real_feed_id = 1501986260074649
+    @real_access_token = 'CAACEdEose0cBACb9LdckZC2vsC2hC26mGZARpuycI45waVrkuG1CGy3S7DmRgBArkRRvhAhZBdNXuj5CTnGnnMbMNWlNWgTj2dEaJcIIamvZCbZBsbtMQOe7880sRNqxCHnketQWBHWaCHnBFfdnrQKvoqq9UwZAmueG8r4pUFaunx1ACgsFRLA5UBVSGiZC4QEs973TZCqaj11bRDnyCs2Lxk6VQzZCqMRMZD'
   end
 
   # Tests for FacebookFeed::FeedDownloader initialization
@@ -19,14 +19,14 @@ class FacebookFeedTest < Test::Unit::TestCase
 
   def test_invalid_feed_downloader_args
     opts = [:feed_id, :access_token]
-    assert_raise FacebookFeed::InvalidFeedDownloaderError do
+    assert_raises FacebookFeed::InvalidFeedDownloaderError do
       downloader = FacebookFeed::FeedDownloader.new(opts)
     end
   end
 
   def test_invalid_feed_downloader_args_keys
     opts = {:feed_id => @valid_feed_id, :access_token => @valid_access_token, :foobar => "bogus"}
-    assert_raise FacebookFeed::InvalidFeedDownloaderError do
+    assert_raises FacebookFeed::InvalidFeedDownloaderError do
       downloader = FacebookFeed::FeedDownloader.new(opts)
     end
   end
@@ -60,5 +60,9 @@ class FacebookFeedTest < Test::Unit::TestCase
     keys = %w(poster message type created_time updated_time like_count comment_count comments)
     keys.map!(&:to_sym)
     keys.each { |key| assert posts_keys.include?(key), "A post hash should not have this key: #{key}" }
+  end
+
+  def assert_nothing_raised(*)
+    yield
   end
 end
