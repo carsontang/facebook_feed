@@ -8,6 +8,6 @@ Gem::Specification.new do |s|
   s.email       = 'tang.carson@gmail.com'
   s.files       = ["lib/facebook_feed.rb", "lib/facebook_feed/feed_downloader.rb", "lib/facebook_feed/errors/feed_error.rb", "lib/facebook_feed/errors/invalid_credentials_error.rb", "lib/facebook_feed/errors/invalid_feed_downloader_error.rb"]
   s.homepage    = "https://github.com/carsontang/facebook_feed"
-  s.add_dependency("json", "= 1.7.4")
-  s.add_dependency("rest-client", "= 1.6.7")
+  s.add_dependency("json", ">= 1.7.4")
+  s.add_dependency("rest-client", ">= 1.6.7")
 end
